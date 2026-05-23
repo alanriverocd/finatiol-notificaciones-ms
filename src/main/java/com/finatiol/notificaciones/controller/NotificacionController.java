@@ -1,5 +1,8 @@
 package com.finatiol.notificaciones.controller;
 
+import com.finatiol.notificaciones.constants.SuccessCodes;
+import com.finatiol.notificaciones.constants.SuccessMessages;
+import com.finatiol.notificaciones.dto.ApiResponse;
 import com.finatiol.notificaciones.dto.EmailRequestDTO;
 import com.finatiol.notificaciones.service.NotificacionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,8 +27,13 @@ public class NotificacionController {
 
     @PostMapping("/email")
     @Operation(summary = "Enviar email", description = "Envía un correo electrónico al destinatario especificado")
-    public ResponseEntity<Void> enviarEmail(@Valid @RequestBody EmailRequestDTO request) {
+    public ResponseEntity<ApiResponse<Void>> enviarEmail(
+            @Valid @RequestBody EmailRequestDTO request) {
+
         notificacionService.enviarEmail(request);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(ApiResponse.success(
+                SuccessCodes.EMAIL_ENVIADO,
+                SuccessMessages.EMAIL_ENVIADO,
+                null));
     }
 }

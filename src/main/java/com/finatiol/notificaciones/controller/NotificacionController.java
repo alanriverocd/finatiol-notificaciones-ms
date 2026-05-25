@@ -1,7 +1,7 @@
 package com.finatiol.notificaciones.controller;
 
-import com.finatiol.notificaciones.constants.SuccessCodes;
-import com.finatiol.notificaciones.constants.SuccessMessages;
+import com.finatiol.common.constants.notificaciones.SuccessCodes;
+import com.finatiol.common.constants.notificaciones.SuccessMessages;
 import com.finatiol.notificaciones.dto.ApiResponse;
 import com.finatiol.notificaciones.dto.EmailRequestDTO;
 import com.finatiol.notificaciones.service.NotificacionService;

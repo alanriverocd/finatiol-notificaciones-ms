@@ -1,6 +1,6 @@
 package com.finatiol.notificaciones.service;
 
-import com.finatiol.notificaciones.constants.ErrorMessages;
+import com.finatiol.common.constants.notificaciones.ErrorMessages;
 import com.finatiol.notificaciones.dto.EmailRequestDTO;
 import com.finatiol.notificaciones.exception.NotificacionException;
 import org.springframework.mail.MailException;

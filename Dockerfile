@@ -1,5 +1,14 @@
-FROM eclipse-temurin:21-jdk
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
-EXPOSE 8080
-COPY target/*.jar app.jar
+COPY finatiol-common/pom.xml ./finatiol-common/pom.xml
+COPY finatiol-common/src ./finatiol-common/src
+RUN mvn -f finatiol-common/pom.xml install -DskipTests -q
+COPY finatiol-notificaciones-ms/pom.xml ./finatiol-notificaciones-ms/pom.xml
+COPY finatiol-notificaciones-ms/src ./finatiol-notificaciones-ms/src
+RUN mvn -f finatiol-notificaciones-ms/pom.xml package -DskipTests -q
+
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+EXPOSE 8083
+COPY --from=build /app/finatiol-notificaciones-ms/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]

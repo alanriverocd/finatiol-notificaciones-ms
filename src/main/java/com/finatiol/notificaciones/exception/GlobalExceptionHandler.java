@@ -1,7 +1,7 @@
 package com.finatiol.notificaciones.exception;
 
-import com.finatiol.notificaciones.constants.ErrorCodes;
-import com.finatiol.notificaciones.constants.ErrorMessages;
+import com.finatiol.common.constants.notificaciones.ErrorCodes;
+import com.finatiol.common.constants.notificaciones.ErrorMessages;
 import com.finatiol.notificaciones.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
